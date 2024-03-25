@@ -10,12 +10,12 @@ export default function Home() {
 
   useEffect(() => {
     if (isConnected) {
-      router.push("/history");
+      router.push("/generate");
     }
   }, [isConnected, router]);
 
   return (
-    <main className="flex min-h-screen w-full flex-col items-center justify-center">
+    <main className="flex min-h-[90vh] w-full flex-col items-center justify-center">
       <section className="w-full">
         <div className="px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
