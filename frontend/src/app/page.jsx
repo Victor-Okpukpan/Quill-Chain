@@ -1,7 +1,9 @@
+"use client"
+import { useWeaveDBFetch } from "@/hooks/useWeaveDBFetch";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import Image from "next/image";
 
 export default function Home() {
+  const { isLoading, data, error } = useWeaveDBFetch('people');
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <ConnectButton />

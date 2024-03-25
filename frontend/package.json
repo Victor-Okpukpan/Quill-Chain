@@ -11,13 +11,15 @@
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.0.2",
     "@tanstack/react-query": "^5.28.8",
+    "coffee-script": "^1.12.7",
     "encoding": "^0.1.13",
     "next": "14.1.4",
     "pino-pretty": "^11.0.0",
     "react": "^18",
     "react-dom": "^18",
     "viem": "^2.9.0",
-    "wagmi": "^2.5.12"
+    "wagmi": "^2.5.12",
+    "weavedb-sdk": "^0.39.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
