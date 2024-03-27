@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Provider from "@/providers/Provider";
 import Betamode from "@/components/Betamode";
+import GlobalStateProvider from "@/providers/GlobalStateProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Betamode />
-        <Provider>{children}</Provider>
+        <Provider>
+          <GlobalStateProvider>{children}</GlobalStateProvider>
+        </Provider>
       </body>
     </html>
   );

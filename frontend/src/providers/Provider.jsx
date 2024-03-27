@@ -1,9 +1,9 @@
 "use client";
 import "@rainbow-me/rainbowkit/styles.css";
 import {
-  getDefaultConfig,
-  getDefaultWallets,
   RainbowKitProvider,
+  getDefaultWallets,
+  getDefaultConfig,
 } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
 import { arbitrumSepolia } from "wagmi/chains";
@@ -12,13 +12,13 @@ import {
   trustWallet,
   ledgerWallet,
 } from "@rainbow-me/rainbowkit/wallets";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const { wallets } = getDefaultWallets();
 
 const config = getDefaultConfig({
-  appName: 'Quill Chain',
-  projectId: '1ba849fe1eca9fda4abc7dd3b46c40a4',
+  appName: "Quill Chain",
+  projectId: "1ba849fe1eca9fda4abc7dd3b46c40a4",
   wallets: [
     ...wallets,
     {
