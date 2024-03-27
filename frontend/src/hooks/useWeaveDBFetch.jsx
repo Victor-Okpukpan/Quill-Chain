@@ -2,12 +2,18 @@
 import { GlobalStateContext } from "@/providers/GlobalStateProvider";
 import { useContext, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
+import WeaveDB from "weavedb-sdk";
+
+
+const db = new WeaveDB({
+  contractTxId: "SGEP62OaHfPxEd-e9HHaHOqRg68M6P0W39XX7kSunxo",
+});
 
 export const useWeaveDBFetch = (collection_name) => {
   const [isLoading, setIsLoading] = useState();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const { db } = useContext(GlobalStateContext);
+  // const { db } = useContext(GlobalStateContext);
   const { address } = useAccount();
 
   useEffect(() => {
