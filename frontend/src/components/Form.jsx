@@ -52,7 +52,7 @@ export default function Form() {
         <input
           maxLength={50}
           placeholder="Input your blog Title"
-          className="border w-full outline-none rounded-md items-start flex overflow-hidden h-[100px] relative p-[20px] bg-slate-100 flex-col flex-nowrap resize-none text-start"
+          className="border text w-full first-letter:uppercase outline-none rounded-md items-start flex overflow-hidden h-[100px] relative p-[20px] bg-slate-100 flex-col flex-nowrap resize-none text-start"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
