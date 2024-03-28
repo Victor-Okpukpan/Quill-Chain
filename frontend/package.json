@@ -13,6 +13,8 @@
     "@tanstack/react-query": "^5.28.8",
     "coffee-script": "^1.12.7",
     "encoding": "^0.1.13",
+    "eventsource-parser": "^1.1.2",
+    "jotai": "^2.7.1",
     "next": "14.1.4",
     "pino-pretty": "^11.0.0",
     "react": "^18",

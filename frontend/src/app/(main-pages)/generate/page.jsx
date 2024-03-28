@@ -1,4 +1,6 @@
 "use client";
+import Form from "@/components/Form";
+import Response from "@/components/Response";
 import { GlobalStateContext } from "@/providers/GlobalStateProvider";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -49,37 +51,8 @@ export default function Generate() {
           </div>
         </div>
         <div className="justify-center flex flex-col flex-nowrap gap-4 ">
-          <div className="relative">
-            <textarea
-              maxLength={80}
-              placeholder="Input your blog Title"
-              className="border w-full outline-none rounded-md items-start flex overflow-hidden h-[150px] relative p-[20px] flex-col flex-nowrap resize-none text-start"
-              value={userInput}
-              onChange={onUserChangedText}
-            />
-            <div className="absolute right-2 bottom-1">
-              <span>{length}/80</span>
-            </div>
-          </div>
-          <button className="bg-black text-white py-4 px-5 rounded-md font-medium hover:bg-black/50 transition-colors duration-200 ease-out">
-            Generate
-          </button>
-          {/* {apiOutput && (
-            <div className="output">
-              <div className="output-header-container">
-                <div className="output-header">
-                  <h3>Output</h3>
-                </div>
-              </div>
-              {/* New code I added here
-              <div className="output-content">
-                <p>{apiOutput}</p>
-              </div>
-              <button onClick={copyToClipboard} className="generate-button">
-                Copy
-              </button>
-            </div>
-          )} */}
+          <Form />
+          <Response />
         </div>
       </div>
     </div>
