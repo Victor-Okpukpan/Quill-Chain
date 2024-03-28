@@ -1,24 +1,17 @@
 import { OpenAIStream } from "@/utils/open-ai-stream";
 
-const basePromptPrefix = `
-Write me a detailed table of contents for a blog post with the title below.
-
-Title:
-`;
-
 export const POST = async (req) => {
   const { prompt } = await req.json();
 
-  // const baseCompletion = await openai.createCompletion({
-  //     model: 'text-davinci-004',
-  //     prompt: `${basePromptPrefix}${req.body.userInput}`,
-  //     temperature: 0.8,
-  //     max_tokens: 1774,
-  //   });
+  const basePayloadPrefix = `
+Write me a detailed table of contents for a blog post with the title below.
+
+Title: ${prompt}
+`;
 
   const basePayload = {
     model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: prompt }],
+    messages: [{ role: "user", content: basePayloadPrefix }],
     temperature: 0.85,
     top_p: 1,
     frequency_penalty: 0,
@@ -31,7 +24,7 @@ export const POST = async (req) => {
   const basePayloadOutput = await OpenAIStream(basePayload);
 
   const secondPrompt = `
-  Take the table of contents and title of the blog post below and generate a blog post written in the style of Paul Graham. Make it feel like a story. Don't just list the points. Go deep into each one. Explain why.
+  Take the table of contents and title of the blog post below and generate a blog post written in the style of Paul Graham. Make it feel like a story. Don't just list the points. Go deep into each one. Explain why. Generate a minimum of 3000 words. Please format your response in HTML.
 
   Title: ${prompt}
 

@@ -7,10 +7,6 @@ import { useContext, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
 export default function Generate() {
-  const [userInput, setUserInput] = useState("");
-  const [length, setLength] = useState("");
-  const [apiOutput, setApiOutput] = useState("");
-  const [isGenerating, setIsGenerating] = useState(false);
   // const { isConnected, address } = useAccount();
   // const router = useRouter();
 
@@ -32,22 +28,12 @@ export default function Generate() {
   //   );
   // }
 
-  useEffect(() => {
-    setLength(userInput.length);
-  }, [userInput]);
-
-  const callGenerateEndpoint = () => {};
-
-  const onUserChangedText = (event) => {
-    setUserInput(event.target.value);
-  };
-
   return (
     <div>
-      <div className="max-w-screen-sm mx-auto mt-5">
+      <div className="max-w-screen-lg mx-auto my-5">
         <div className="flex flex-col w-full items-center">
           <div className="header-subtitle mb-3">
-            <h2 className="text-xl">Input your Blog Post Title</h2>
+            <h2 className="text-5xl font-bold">Input your Blog Post Title</h2>
           </div>
         </div>
         <div className="justify-center flex flex-col flex-nowrap gap-4 ">

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.formatted h1,
+.formatted h2,
+.formatted h3,
+.formatted h4,
+.formatted h5,
+.formatted h6 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.formatted p {
+    margin-bottom: 16px;
+}
