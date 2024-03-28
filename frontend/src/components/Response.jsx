@@ -3,6 +3,7 @@ import { responseAtom } from "@/utils/store";
 import { useAtom } from "jotai";
 import copy from "copy-to-clipboard";
 import { HiOutlineClipboardCopy } from "react-icons/hi";
+import { toast } from "sonner";
 
 
 export default function Response() {
@@ -23,6 +24,7 @@ export default function Response() {
   const handleCopy = () => {
     const strippedText = stripHtmlTags(response);
     copy(strippedText);
+    toast.success("Copied To Clipboard!")
  };
 
   return (

@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Provider from "@/providers/Provider";
 import Betamode from "@/components/Betamode";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} bg-slate-200`}>
         <Betamode />
         <Provider>{children}</Provider>
+        <Toaster richColors />
       </body>
     </html>
   );

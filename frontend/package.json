@@ -21,6 +21,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "sonner": "^1.4.41",
     "viem": "^2.9.0",
     "wagmi": "^2.5.12",
     "weavedb-sdk": "^0.39.2"

@@ -2,6 +2,7 @@
 import { responseAtom } from "@/utils/store";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function Form() {
   const [input, setInput] = useState("");
@@ -17,6 +18,8 @@ export default function Form() {
     e.preventDefault();
     setResponse("");
     setIsLoading(true);
+
+    const toastId = toast.loading("Loading data");
 
     const res = await fetch("/api/generate", {
       method: "POST",
@@ -42,6 +45,7 @@ export default function Form() {
       setResponse((prev) => prev + chunkValue);
     }
 
+    toast.success("Done!", { id: toastId });
     setInput("");
     setIsLoading(false);
   };
