@@ -35,7 +35,7 @@ export default function History() {
       <div className="max-w-screen-md mx-auto flex flex-col space-y-5 my-5">
         {data &&
           data.map((item, i) => (
-            <div key={i} className="bg-blue-100/50 shadow rounded p-5">
+            <div key={i} className="bg-gray-100 formatted rounded-md p-12">
               <h2 className="font-bold text-xl capitalize">
                 {item.title}
               </h2>

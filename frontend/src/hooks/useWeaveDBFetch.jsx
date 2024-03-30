@@ -13,7 +13,6 @@ export const useWeaveDBFetch = (collection_name) => {
   const [isLoading, setIsLoading] = useState();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  // const { db } = useContext(GlobalStateContext);
   const { address } = useAccount();
 
   useEffect(() => {
