@@ -24,7 +24,8 @@
     "sonner": "^1.4.41",
     "viem": "^2.9.0",
     "wagmi": "^2.5.12",
-    "weavedb-sdk": "^0.39.2"
+    "weavedb-sdk": "^0.39.2",
+    "web3": "^4.7.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

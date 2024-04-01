@@ -2,9 +2,14 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import UnsubscribeButton from "./UnsubscribeButton";
+import SubscribeButton from "./SubscribeButton";
+import { useContext, useState } from "react";
+import { GlobalStateContext } from "@/providers/GlobalStateProvider";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { isSubscribed } = useContext(GlobalStateContext);
 
   const matchPath = (path) => {
     if (path === pathname) return true;
@@ -12,7 +17,7 @@ export default function Navbar() {
 
   return (
     <div className="border-b p-2 flex items-center justify-end space-x-3">
-      <div className="space-x-2">
+      <div className="space-x-2 flex items-center">
         <Link
           href="/generate"
           className={`${
@@ -29,6 +34,7 @@ export default function Navbar() {
         >
           History
         </Link>
+        {isSubscribed ? <UnsubscribeButton /> : <SubscribeButton />}
       </div>
       <ConnectButton
         accountStatus={{
