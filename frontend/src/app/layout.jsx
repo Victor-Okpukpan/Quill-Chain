@@ -4,6 +4,7 @@ import Provider from "@/providers/Provider";
 import Betamode from "@/components/Betamode";
 import { Toaster } from "sonner";
 import GlobalStateProvider from "@/providers/GlobalStateProvider";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,10 +16,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} relative bg-slate-200`}>
-        
+      <body className={`${inter.className} min-h-screen pb-5 relative bg-slate-200`}>
         <Provider>
-          <GlobalStateProvider>{children}</GlobalStateProvider>
+          <GlobalStateProvider>
+            {children}
+            <Footer />
+          </GlobalStateProvider>
         </Provider>
         <Toaster richColors />
       </body>

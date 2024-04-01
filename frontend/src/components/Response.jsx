@@ -47,7 +47,7 @@ export default function Response() {
   return (
     <>
       {response && (
-        <div>
+        <div className="mb-2">
           <div className="bg-gray-100 p-12 rounded-md w-full">
             <div className="flex justify-end items-center w-full space-x-2">
               <button onClick={handleCopy} className="float-right">
