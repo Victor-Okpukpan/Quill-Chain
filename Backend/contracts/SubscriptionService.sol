@@ -74,6 +74,16 @@ contract SubscriptionService is Ownable {
         return subscriptions[user].isActive;
     }
 
+    function getSubscriptionStartDate(address user)
+        external
+        view
+        returns (uint256)
+    {
+        require(subscriptions[user].isActive, "No active subscription.");
+
+        return subscriptions[user].startDate;
+    }
+
     function getSubscriptionEndDate(address user)
         external
         view
