@@ -8,16 +8,18 @@ import abi from "../contracts/contract-abi.json";
 import Web3 from "web3";
 
 export default function SubScriptionModal() {
-  const { setOpenSubscription, contractAddress } = useContext(GlobalStateContext);
+  const { setOpenSubscription, contractAddress } =
+    useContext(GlobalStateContext);
   const { writeContractAsync } = useWriteContract();
 
   const subscribe = async () => {
+    setOpenSubscription((prev) => !prev);
     try {
       const txResponse = await writeContractAsync({
         abi: abi,
         address: contractAddress,
         functionName: "activateSubscription",
-        value: Web3.utils.toWei("0.01", "ether")
+        value: Web3.utils.toWei("0.01", "ether"),
       });
       console.log(txResponse); // Log the transaction response
     } catch (error) {
@@ -39,8 +41,25 @@ export default function SubScriptionModal() {
           onClick={() => setOpenSubscription((prev) => !prev)}
           className="absolute top-3 right-3 cursor-pointer"
         />
-        <p className="mb-5">
-          Hi, you are about to subscribe for our monthly plan.
+        <p>
+          Welcome to QuillChain! To enjoy all the features and benefits, you'll
+          need to subscribe.
+        </p>
+        <ul className="my-5 flex flex-col items-start justify-start text-sm">
+          <li>
+            <span className="font-medium text-base">Duration:</span> 1 month
+          </li>
+          <li>
+            <span className="font-medium text-base">Cost:</span> 0.01 ETH
+          </li>
+          <li>
+            <span className="font-medium text-base  ">Refund:</span> Unsubscribe
+            within 7 days to get back half of your initial deposit.
+          </li>
+        </ul>
+        <p className="mb-5 text-center">
+          Please ensure you have enough ETH in your wallet to cover the
+          subscription fee.
         </p>
         <button
           onClick={subscribe}
