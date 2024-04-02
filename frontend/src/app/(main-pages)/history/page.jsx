@@ -9,7 +9,8 @@ export default function History() {
   const { isConnected } = useAccount();
   const { isLoading, data, error } = useWeaveDBFetch();
   const router = useRouter();
-console.log("init", data);
+
+  console.log(contents);
 
   useEffect(() => {
     if (!isConnected) {
@@ -18,15 +19,10 @@ console.log("init", data);
   }, [isConnected]);
 
   useEffect(() => {
-    if (isLoading || error) {
-      return; // Early return if loading or error to avoid fetching data
-    }
-
     async function fetchData() {
       if (data) {
         const hashes = data.map((item) => item.response);
         const urls = hashes.map((hash) => `https://arweave.net/${hash}`);
-        console.log("hashes:", hashes)
 
         const fetchedContents = await Promise.all(
           urls.map(async (url) => {
@@ -38,7 +34,7 @@ console.log("init", data);
       }
     }
     fetchData();
-  }, [data, isLoading, error]);
+  }, [data]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -51,7 +47,7 @@ console.log("init", data);
   return (
     <div>
       <div className="max-w-screen-lg mx-auto flex flex-col space-y-5 mt-5 mb-7">
-        {data &&
+        {contents &&
           contents.map((item, i) => (
             <div
               key={i}
