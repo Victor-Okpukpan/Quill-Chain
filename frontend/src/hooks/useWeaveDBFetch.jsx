@@ -4,26 +4,27 @@ import { useContext, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import WeaveDB from "weavedb-sdk";
 
-
-const db = new WeaveDB({
-  contractTxId: "SGEP62OaHfPxEd-e9HHaHOqRg68M6P0W39XX7kSunxo",
-});
-
-export const useWeaveDBFetch = (collection_name) => {
-  const [isLoading, setIsLoading] = useState();
+export const useWeaveDBFetch = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const { address } = useAccount();
-
+  
+  console.log("fetched:", data)
+  console.log("fetched Address:", address)
+  
   useEffect(() => {
+    const db = new WeaveDB({
+      contractTxId: "cyZ3aeoXnnWTWsiJCZzeowXKrcc_UlXeVWtOVuzLXbE",
+    });
     const fetchData = async () => {
       setIsLoading(true);
       await db.init();
       try {
-        const fetchedData = await db.get(collection_name, [
+        const fetchedData = await db.get("data2", [
           "address",
           "==",
-          address,
+          address
         ]);
         setData(fetchedData);
       } catch (err) {
@@ -34,7 +35,7 @@ export const useWeaveDBFetch = (collection_name) => {
     };
 
     fetchData();
-  }, [collection_name]);
+  }, []);
 
   return { isLoading, data, error };
 };

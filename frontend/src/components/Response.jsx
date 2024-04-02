@@ -41,7 +41,7 @@ export default function Response() {
 
     const receipt = await irys.upload(unescapedResponse);
 
-    await db.add({ address: address, response: receipt.id }, "data");
+    await db.add({ address: address, response: receipt.id }, "data2");
 
     console.log(db);
 

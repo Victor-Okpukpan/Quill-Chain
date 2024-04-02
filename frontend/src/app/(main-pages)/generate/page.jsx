@@ -7,26 +7,14 @@ import { useContext, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
 export default function Generate() {
-  // const { isConnected, address } = useAccount();
-  // const router = useRouter();
+  const { isConnected, address } = useAccount();
+  const router = useRouter();
 
-  // useEffect(() => {
-  //   if (!isConnected) {
-  //     router.push("/");
-  //   }
-  // }, [isConnected]);
-
-  // async function call() {
-  //   await db.init();
-  //   const tx = await db.add(
-  //     {
-  //       title: "new one",
-  //       content: "hahaha",
-  //       address: address,
-  //     },
-  //     "data"
-  //   );
-  // }
+  useEffect(() => {
+    if (!isConnected) {
+      router.push("/");
+    }
+  }, [isConnected]);
 
   return (
     <div>

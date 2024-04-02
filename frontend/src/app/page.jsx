@@ -5,14 +5,14 @@ import { useEffect } from "react";
 import { useAccount } from "wagmi";
 
 export default function Home() {
-  // const { isConnected } = useAccount();
-  // const router = useRouter();
+  const { isConnected } = useAccount();
+  const router = useRouter();
 
-  // useEffect(() => {
-  //   if (isConnected) {
-  //     router.push("/generate");
-  //   }
-  // }, [isConnected, router]);
+  useEffect(() => {
+    if (isConnected) {
+      router.push("/generate");
+    }
+  }, [isConnected, router]);
 
   return (
     <main className="flex min-h-[90vh] w-full flex-col items-center justify-center">
