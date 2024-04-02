@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import WeaveDB from "weavedb-sdk";
 import { useAccount } from "wagmi";
 import { FaSave } from "react-icons/fa";
+import { getWebIrys } from "@/utils/getIrys";
 
 export default function Response() {
   const [response] = useAtom(responseAtom);
@@ -31,16 +32,19 @@ export default function Response() {
   };
 
   const handleSave = async () => {
-    const strippedText = stripHtmlTags(response);
     const db = new WeaveDB({
       contractTxId: "cyZ3aeoXnnWTWsiJCZzeowXKrcc_UlXeVWtOVuzLXbE",
     });
     await db.init();
 
-    await db.add({address: address, response: strippedText }, "data");
-    
+    const irys = await getWebIrys();
+
+    const receipt = await irys.upload(unescapedResponse);
+
+    await db.add({ address: address, response: receipt.id }, "data");
+
     console.log(db);
-    
+
     toast.success("This post has been saved!");
   };
 
