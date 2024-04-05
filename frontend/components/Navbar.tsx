@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import UnsubscribeButton from "./UnsubscribeButton";
 import SubscribeButton from "./SubscribeButton";
 import { useGlobalContext } from "../providers/GlobalStateProvider";
-// import { useGlobalContext } from "@/providers/GlobalStateProvider";
 
 export default function Navbar() {
   const pathname = usePathname();

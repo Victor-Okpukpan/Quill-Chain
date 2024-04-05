@@ -43,7 +43,13 @@ export default function History() {
   }, [data, setContents]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>
+      <Betamode />
+      <Navbar />
+      <div className="min-h-screen flex items-center justify-center">
+        <img src="/loader.svg" alt="Loading..." className="w-[300px] h-[300px]" />
+      </div>
+    </div>;
   }
 
   return (
