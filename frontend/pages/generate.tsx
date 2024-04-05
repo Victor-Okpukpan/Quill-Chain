@@ -8,8 +8,12 @@ import { useAccount } from "wagmi";
 import Navbar from "../components/Navbar";
 import Betamode from "../components/Betamode";
 import MetaHead from "../components/MetaHead";
+import { useGlobalContext } from "../providers/GlobalStateProvider";
+import SubScriptionModal from "../components/SubScriptionModal";
+import UnsubscriptionModal from "../components/UnsubscriptionModal";
 
 export default function Generate() {
+  const { openSubscription, openRemoveSubscription } = useGlobalContext();
   const { isConnected } = useAccount();
   const router = useRouter();
 
@@ -24,6 +28,8 @@ export default function Generate() {
       <MetaHead />
       <Betamode />
       <Navbar />
+      {openSubscription && <SubScriptionModal />}
+      {openRemoveSubscription && <UnsubscriptionModal />}
       <div className="max-w-screen-lg mx-auto my-5">
         <div className="flex flex-col w-full items-center">
           <div className="header-subtitle mb-3">

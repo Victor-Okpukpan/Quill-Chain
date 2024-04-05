@@ -20,7 +20,7 @@ type GlobalStateContextType = {
   startDate?: string | null;
   contractAddress?: `0x${string}`;
   exceeded?: boolean;
-  remainingDays?: { days: number } | null;
+  remainingDays?: { days: any } | null;
 };
 
 // Step 2: Create the Context with Default Values
@@ -33,6 +33,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [isSubscribed, setIsSubscribed] = useState<boolean | null>(null);
   const [startDate, setStartDate] = useState<string | null>(null);
   const [endDate, setEndDate] = useState<string | null>(null);
+  console.log("enddate:", endDate);
   const [remainingDays, setRemainingDays] = useState<{ days: number } | null>(
     null
   );
@@ -64,17 +65,17 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     args: [address],
   });
 
-  function hasExceededSevenDays(date: string) {
+  function hasExceededSevenDays(date: bigint) {
     const start = new Date(Number(date.toString()) * 1000);
     start.setDate(start.getDate() + 7);
     const now = new Date();
     return now > start;
   }
 
-  function daysRemaining(date: string) {
-    const endDate: any = new Date(Number(date.toString()) * 1000);
-    const now: any = new Date();
-    const difference = endDate - now;
+  function daysRemaining(date: bigint) {
+    const endDate = new Date(Number(date.toString()) * 1000);
+    const now = new Date();
+    const difference = endDate.getTime() - now.getTime();
     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
 
     return { days };

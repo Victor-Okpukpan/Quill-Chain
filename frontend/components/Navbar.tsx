@@ -15,7 +15,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="border-b p-2 flex items-center justify-end space-x-3">
+    <nav className="border-b p-2 sticky top-0 bg-white flex items-center justify-end space-x-3">
       <div className="space-x-2 flex items-center">
         <Link
           href="/generate"
@@ -42,6 +42,6 @@ export default function Navbar() {
         }}
         showBalance={false}
       />
-    </div>
+    </nav>
   );
 }

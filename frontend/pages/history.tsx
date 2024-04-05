@@ -51,7 +51,7 @@ export default function History() {
       <MetaHead />
       <Betamode />
       <Navbar />
-      <div className="max-w-screen-lg mx-auto flex flex-col space-y-5 mt-5 mb-7">
+      <div className="max-w-screen-lg px-2 mx-auto flex flex-col space-y-5 mt-5 mb-7">
         {contents &&
           contents.map((item, i) => (
             <div
