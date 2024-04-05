@@ -1,8 +1,12 @@
 import { OpenAIStream } from "../../utils/open-ai-stream";
+import { StreamingTextResponse } from "ai";
+
+export const runtime = "edge";
 
 export default async function handler(req, res) {
   try {
-    const prompt = req.body.prompt
+    const { prompt } = await req.json();
+
     const basePayloadPrefix = `
       Write me a detailed table of contents for a blog post with the title below.
 
@@ -47,10 +51,7 @@ export default async function handler(req, res) {
 
     const stream = await OpenAIStream(finalPayload);
 
-    // Log for debugging
-    console.log(stream);
-
-    res.status(200).json(stream);
+    return new StreamingTextResponse(stream);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
