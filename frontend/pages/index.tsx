@@ -5,6 +5,7 @@ import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import MetaHead from "../components/MetaHead";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
@@ -45,6 +46,7 @@ const Home: NextPage = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </div>
   );
 };

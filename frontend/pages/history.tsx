@@ -5,6 +5,7 @@ import { useWeaveDBFetch } from "../hooks/useWeaveDBFetch";
 import Betamode from "../components/Betamode";
 import Navbar from "../components/Navbar";
 import MetaHead from "../components/MetaHead";
+import Footer from "../components/Footer";
 
 export default function History() {
   const [contents, setContents] = useState<string[]>([]);
@@ -43,30 +44,37 @@ export default function History() {
   }, [data, setContents]);
 
   if (isLoading) {
-    return <div>
-      <Betamode />
-      <Navbar />
-      <div className="min-h-screen flex items-center justify-center">
-        <img src="/loader.svg" alt="Loading..." className="w-[300px] h-[300px]" />
+    return (
+      <div>
+        <Betamode />
+        <Navbar />
+        <div className="min-h-screen flex items-center justify-center">
+          <img
+            src="/loader.svg"
+            alt="Loading..."
+            className="w-[300px] h-[300px]"
+          />
+        </div>
       </div>
-    </div>;
+    );
   }
 
   return (
-    <div className="relative">
+    <div className="relative min-h-screen">
       <MetaHead />
       <Betamode />
       <Navbar />
-      <div className="max-w-screen-lg px-2 mx-auto flex flex-col space-y-5 mt-5 mb-7">
+      <div className="max-w-screen-lg px-2 mx-auto flex flex-col space-y-5 mt-5">
         {contents &&
           contents.map((item, i) => (
             <div
               key={i}
-              className="bg-gray-100 formatted rounded-md p-12"
+              className="bg-gray-100 formatted rounded-md p-12 last:mb-16"
               dangerouslySetInnerHTML={{ __html: item }}
             ></div>
           ))}
       </div>
+      <Footer />
     </div>
   );
 }
