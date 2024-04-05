@@ -24,6 +24,7 @@
     "react-icons": "^5.0.1",
     "sonner": "^1.4.41",
     "typescript": "^5.4.3",
+    "uuid": "^9.0.1",
     "viem": "^2.8.12",
     "wagmi": "^2.5.11",
     "weavedb-sdk": "^0.39.2",

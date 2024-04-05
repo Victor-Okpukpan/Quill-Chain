@@ -7,13 +7,9 @@ import WeaveDB from "weavedb-sdk";
 export const useWeaveDBFetch = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<[]>([]);
-  // const [error, setError] = useState(null);
   const { address } = useAccount();
   const [db, setDb] = useState(null);
   const contractTxId = "cyZ3aeoXnnWTWsiJCZzeowXKrcc_UlXeVWtOVuzLXbE";
-
-  console.log("fetched:", data);
-  console.log("fetched Address:", address);
 
   useEffect(() => {
     const init = async () => {

@@ -35,8 +35,6 @@ export default function Response() {
 
     await db.add({ address: address, response: receipt.id }, "data2");
 
-    console.log(db);
-
     toast.success("This post has been saved!");
   };
 

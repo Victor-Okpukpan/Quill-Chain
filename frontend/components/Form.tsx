@@ -1,6 +1,5 @@
 import { useAtom } from "jotai";
 import { FormEvent, useEffect, useState } from "react";
-import { toast } from "sonner";
 import { useAccount } from "wagmi";
 import SubscriptionStatus from "./SubscriptionStatus";
 import { useGlobalContext } from "../providers/GlobalStateProvider";
@@ -22,8 +21,6 @@ export default function Form() {
     e.preventDefault();
     setResponse("");
     setIsLoading(true);
-
-    const toastId = toast.loading("Loading data");
 
     try {
       const res = await fetch("/api/generate", {
@@ -52,7 +49,6 @@ export default function Form() {
     } catch (error: any) {
       console.log(error);
     } finally {
-      toast.success("Done!", { id: toastId });
       setInput("");
       setIsLoading(false);
     }

@@ -1,11 +1,11 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import type { NextPage } from "next";
-import styles from "../styles/Home.module.css";
 import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import MetaHead from "../components/MetaHead";
 import Footer from "../components/Footer";
+import { toast } from "sonner";
 
 const Home: NextPage = () => {
   const { isConnected } = useAccount();
@@ -14,11 +14,12 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (isConnected) {
       router.push("/generate");
+      toast.success("Wallet Connected!")
     }
   }, [isConnected, router]);
 
   return (
-    <div className="relative">
+    <div className="relative min-h-screen">
       <MetaHead />
       <main className="flex min-h-[90vh] w-full flex-col items-center justify-center">
         <section className="w-full">

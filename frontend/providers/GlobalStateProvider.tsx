@@ -9,7 +9,6 @@ import { useReadContract } from "wagmi";
 import abi from "../contracts/contract-abi.json";
 import { useAccount } from "wagmi";
 
-// Step 1: Define the Context Type
 type GlobalStateContextType = {
   isSubscribed: boolean | null;
   setIsSubscribed?: React.Dispatch<React.SetStateAction<boolean | null>>;
@@ -23,9 +22,8 @@ type GlobalStateContextType = {
   remainingDays?: { days: any } | null;
 };
 
-// Step 2: Create the Context with Default Values
 const GlobalStateContext = createContext<GlobalStateContextType>({
-   isSubscribed: false
+  isSubscribed: false,
 });
 
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
@@ -33,7 +31,6 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [isSubscribed, setIsSubscribed] = useState<boolean | null>(null);
   const [startDate, setStartDate] = useState<string | null>(null);
   const [endDate, setEndDate] = useState<string | null>(null);
-  console.log("enddate:", endDate);
   const [remainingDays, setRemainingDays] = useState<{ days: number } | null>(
     null
   );
@@ -42,7 +39,8 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [openRemoveSubscription, setOpenRemoveSubscription] =
     useState<boolean>(false);
 
-  const contractAddress: `0x${string}` = "0x977B9ed055EDF61F99261b3Da22d6922f4796903";
+  const contractAddress: `0x${string}` =
+    "0x977B9ed055EDF61F99261b3Da22d6922f4796903";
 
   const { data: subStatus } = useReadContract({
     abi: abi,
@@ -72,7 +70,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     return now > start;
   }
 
-  function daysRemaining(date: bigint) {
+  function daysRemaining(date: bigint): { days: number } {
     const endDate = new Date(Number(date.toString()) * 1000);
     const now = new Date();
     const difference = endDate.getTime() - now.getTime();
@@ -89,19 +87,19 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (isSubscribed) {
-      if (typeof subStartDate === "string" || subStartDate === null) {
-        setStartDate(subStartDate);
-      }
-      if (typeof subEndDate === "string" || subEndDate === null) {
-        setEndDate(subEndDate);
-      }
+      //@ts-ignore
+      setStartDate(subStartDate);
+      //@ts-ignore
+      setEndDate(subEndDate);
     }
   }, [isSubscribed, subStartDate, subEndDate]);
 
   useEffect(() => {
     if (startDate !== null && endDate !== null) {
-      setExceeded(hasExceededSevenDays(startDate));
-      setRemainingDays(daysRemaining(endDate));
+      const startDateBigInt = BigInt(startDate);
+      const endDateBigInt = BigInt(endDate);
+      setExceeded(hasExceededSevenDays(startDateBigInt));
+      setRemainingDays(daysRemaining(endDateBigInt));
     }
   }, [endDate, startDate]);
 

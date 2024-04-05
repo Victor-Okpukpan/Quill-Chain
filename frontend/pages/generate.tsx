@@ -25,7 +25,7 @@ export default function Generate() {
   }, [isConnected, router]);
 
   return (
-    <div className="relative">
+    <div className="relative min-h-screen">
       <MetaHead />
       <Betamode />
       <Navbar />

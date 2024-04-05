@@ -16,6 +16,7 @@ import {
   ledgerWallet,
 } from "@rainbow-me/rainbowkit/wallets";
 import { GlobalStateProvider } from "../providers/GlobalStateProvider";
+import { Toaster } from "sonner";
 
 const { wallets } = getDefaultWallets();
 
@@ -42,6 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <RainbowKitProvider modalSize="compact">
           <GlobalStateProvider>
             <Component {...pageProps} />
+            <Toaster richColors />
           </GlobalStateProvider>
         </RainbowKitProvider>
       </QueryClientProvider>

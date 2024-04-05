@@ -1,4 +1,3 @@
-// import { useGlobalContext } from "@/providers/GlobalStateProvider";
 import { HiX } from "react-icons/hi";
 import { useWriteContract } from "wagmi";
 import abi from "../contracts/contract-abi.json";
@@ -21,7 +20,7 @@ export default function UnsubscriptionModal() {
         functionName: "deactivateSubscription",
       });
     } catch (error) {
-      console.error(error); // Handle any errors
+      console.error(error);
     } finally {
       setIsLoading(false);
       setOpenRemoveSubscription?.((prev) => !prev);

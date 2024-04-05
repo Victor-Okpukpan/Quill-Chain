@@ -21,8 +21,9 @@ export default function SubScriptionModal() {
         functionName: "activateSubscription",
         value: Web3.utils.toBigInt(Web3.utils.toWei("0.01", "ether")),
       });
+      console.log(txResponse)
     } catch (error) {
-      console.error(error); // Handle any errors
+      console.error(error);
     } finally {
       setIsLoading(false);
       setOpenSubscription?.((prev) => !prev);

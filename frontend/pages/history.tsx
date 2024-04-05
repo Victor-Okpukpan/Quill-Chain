@@ -6,18 +6,28 @@ import Betamode from "../components/Betamode";
 import Navbar from "../components/Navbar";
 import MetaHead from "../components/MetaHead";
 import Footer from "../components/Footer";
+import { useGlobalContext } from "../providers/GlobalStateProvider";
+import { toast } from "sonner";
 
 export default function History() {
   const [contents, setContents] = useState<string[]>([]);
   const { isConnected } = useAccount();
   const router = useRouter();
   const { data, isLoading } = useWeaveDBFetch();
+  const { isSubscribed } = useGlobalContext();
 
   useEffect(() => {
     if (!isConnected) {
       router.push("/");
     }
   }, [isConnected, router]);
+
+  useEffect(() => {
+    if (isConnected && !isSubscribed) {
+      router.push("/generate");
+      toast.error("Please Subscribe");
+    }
+  }, [isConnected, isSubscribed, router]);
 
   useEffect(() => {
     async function fetchData() {

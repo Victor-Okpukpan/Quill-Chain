@@ -1,7 +1,5 @@
 import { useGlobalContext } from "../providers/GlobalStateProvider";
 
-// import { useGlobalContext } from "@/providers/GlobalStateProvider";
-
 export default function SubscribeButton() {
   const { setOpenSubscription } = useGlobalContext();
 
