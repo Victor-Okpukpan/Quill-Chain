@@ -4,6 +4,7 @@ import { useAccount } from "wagmi";
 import { useWeaveDBFetch } from "../hooks/useWeaveDBFetch";
 import Betamode from "../components/Betamode";
 import Navbar from "../components/Navbar";
+import MetaHead from "../components/MetaHead";
 
 export default function History() {
   const [contents, setContents] = useState<string[]>([]);
@@ -46,7 +47,8 @@ export default function History() {
   }
 
   return (
-    <div>
+    <div className="relative">
+      <MetaHead />
       <Betamode />
       <Navbar />
       <div className="max-w-screen-lg mx-auto flex flex-col space-y-5 mt-5 mb-7">

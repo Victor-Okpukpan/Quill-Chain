@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useAccount } from "wagmi";
 import Navbar from "../components/Navbar";
 import Betamode from "../components/Betamode";
+import MetaHead from "../components/MetaHead";
 
 export default function Generate() {
   const { isConnected } = useAccount();
@@ -19,7 +20,8 @@ export default function Generate() {
   }, [isConnected, router]);
 
   return (
-    <div>
+    <div className="relative">
+      <MetaHead />
       <Betamode />
       <Navbar />
       <div className="max-w-screen-lg mx-auto my-5">
