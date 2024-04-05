@@ -19,7 +19,7 @@ export default function UnsubscribeButton() {
       disabled={exceeded}
       title="Unsubscribe"
       onClick={() => setOpenRemoveSubscription?.((prev) => !prev)}
-      className={`bg-red-500 disabled:cursor-not-allowed disabled:bg-red-400 text-white font-medium p-2 rounded-md ${
+      className={`bg-red-500 disabled:cursor-not-allowed text-sm md:text-base disabled:bg-red-400 text-white font-medium p-2 rounded-md ${
         matchPath("/history") && "hidden"
       }`}
     >

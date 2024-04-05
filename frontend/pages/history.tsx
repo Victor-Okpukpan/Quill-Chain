@@ -79,7 +79,7 @@ export default function History() {
           contents.map((item, i) => (
             <div
               key={i}
-              className="bg-gray-100 formatted rounded-md p-12 last:mb-16"
+              className="bg-gray-100 formatted rounded-md p-4 md:p-12 last:mb-16"
               dangerouslySetInnerHTML={{ __html: item }}
             ></div>
           ))}

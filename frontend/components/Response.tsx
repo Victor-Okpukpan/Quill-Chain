@@ -42,7 +42,7 @@ export default function Response() {
     <>
       {response && (
         <div className="mb-14">
-          <div className="bg-gray-100 p-12 rounded-md w-full">
+          <div className="bg-gray-100 p-4 md:p-12 rounded-md w-full">
             <div className="flex justify-end items-center w-full space-x-2">
               <button onClick={handleCopy} className="float-right">
                 <HiOutlineClipboardCopy size={20} title="Copy to Clipboard" />
